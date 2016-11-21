@@ -7,8 +7,7 @@ var postSchema = new Schema({
     required: true
   },
   cover: {
-    type: String,
-    required: false
+    type: String
   },
   body: {
     type: String,
