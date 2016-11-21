@@ -14,7 +14,19 @@ router.get('/posts', function(req, res){
     });
   });
 });
-router.get('/posts/:id', function(req, res){});
+router.get('/posts/:id', function(req, res, next){
+  Post.find({_id: req.params.id}, function(err, foundPost){
+    if(err){
+       res.status(500).json({
+        msg: err
+      });
+      next();
+    }
+     res.status(200).json({
+      post: foundPost
+    });
+  });
+});
 router.post('/posts', function(req, res){
   var post = new Post(req.body);
   post.postDate = new Date();
