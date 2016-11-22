@@ -1,5 +1,5 @@
 (function() {
 
-  angular.module('my_two_cents', []);
-  
+  angular.module('two-cents', []);
+
 }());

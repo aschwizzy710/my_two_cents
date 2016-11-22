@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="my_two_cents">
+<html ng-app="two-cents">
 <head>
   <title>My Two Cents</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
@@ -9,10 +9,12 @@
   <div ng-controller="MainController">
     <input type="text" ng-model='newPost'>
       <button ng-click='createPost(newPost)'>Add New Post</button>
+
+
   </div>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
  <script src="js/app.js"></script>
  <script src="js/controllers/main.controller.js"></script>
- <script src="js/services/todo.service.js"></script>
+ <script src="js/services/post.service.js"></script>
 </body>
 </html>
