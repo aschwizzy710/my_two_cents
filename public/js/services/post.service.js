@@ -5,13 +5,14 @@
 PostService.$inject = ['$http'];
 
 function PostService($http){
-  init();
   var posts = [];
+  init();
   return {
-    get: getAllPosts,
-    create: createOnePost,
-    update: updateOnePost,
-    delete: deleteOnePost
+    getAll: getAll,
+    getOne: getOne,
+    create: create,
+    update: update,
+    delete: deleteOne
   };
 
   function init(){
@@ -26,12 +27,14 @@ function PostService($http){
   function getAllPosts(){
     return posts;
   }
-  function createOnePost(post){
+  function getOne(id){}
+  function createOnePost(newPost){
     $http.post('/posts', post)
         .then(function(response){
 
-        })
+        });
   }
-
+  function update(id, newPostData){}
+  function deleteOne(id){}
 }
 }());
