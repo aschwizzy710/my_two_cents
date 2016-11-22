@@ -5,16 +5,16 @@
 MainController.$inject = ['$scope', 'PostService'];
 
 function MainController($scope, PostService){
-  $scope.posts = PostService.get();
+  $scope.posts = PostService.getAll();
   $scope.createPost = createPost;
   $scope.deletePost = deletePost;
   $scope.editPost = editPost;
   $scope.savePost = savePost;
 
-  $scope.watch(function(){
-    return PostService.get();
+  $scope.$watch(function(){
+    return PostService.getAll();
   }, function(){
-    $scope.posts = PostService.get();
+    $scope.posts = PostService.getAll();
   });
   function createPost(newPost){
     PostService.create(newPost);
