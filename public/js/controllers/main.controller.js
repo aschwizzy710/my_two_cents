@@ -6,27 +6,27 @@ MainController.$inject = ['$scope', 'PostService'];
 
 function MainController($scope, PostService){
   $scope.posts = PostService.getAll();
-  $scope.createPost = createPost;
-  $scope.deletePost = deletePost;
-  $scope.editPost = editPost;
-  $scope.savePost = savePost;
+  $scope.create = create;
+  $scope.delete = deleteOne;
+  $scope.edit = edit;
+  $scope.save = save;
 
   $scope.$watch(function(){
     return PostService.getAll();
   }, function(){
     $scope.posts = PostService.getAll();
   });
-  function createPost(newPost){
+  function create(newPost){
     PostService.create(newPost);
-    $scope.newPost = '';
+    $scope.newPost = {};
   }
-  function deletePost(index, post){
-    PostService.delete(index, post);
+  function deleteOne(index, post){
+    PostService.deleteOne(index, post);
   }
-  function editPost(post){
+  function edit(post){
     post.isBeingEdited = true;
   }
-  function savePost(index, post){
+  function save(index, post){
     AlbumService.update(index, post);
     album.isBeingEdited = false;
   }

@@ -30,9 +30,12 @@ function PostService($http){
   }
   function getOne(id){}
   function create(newPost){
-    $http.post('/posts', post)
+    $http.post(baseURL, newPost)
         .then(function(response){
-
+          init();
+        })
+        .catch(function(error){
+          console.log(error);
         });
   }
   function update(id, newPostData){}
