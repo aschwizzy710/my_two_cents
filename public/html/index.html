@@ -10,16 +10,26 @@
     <input type="text" ng-model="newPost.author" placeholder="Author">
     <input type="text" ng-model="newPost.title" placeholder="Title"> <br>
     <textarea cols="30" rows="10" ng-model="newPost.body"></textarea> <br>
-    <button class="btn btn-default" ng-click="create(newPost)">Create</button> <br>
-    Delete: <input type="text" ng-model="deleteID" placeholder="Post ID">
+    <button class="btn btn-default" ng-click="create(newPost)">Create</button>
+    <br>
+    <hr>
+
+    Delete:
+
+    <input type="text" ng-model="deleteID" placeholder="Post ID">
     <button class="btn btn-danger" ng-click="delete(deleteID)">&times;</button>
     <hr>
+
     Get One:
 
     <input type="text" ng-model="getID">
     <button class="btn btn-success" ng-click="getOne(getID)">Get That!</button>
+    {{ selectedPost }}
+    <button class="btn btn-success" ng-click="getSelectedPost()">Get Selected Post</button>
     <hr>
+
     Update:
+
     <input type="text" ng-model="updatedID" placeholder="ID">
     <input type="text" ng-mdel="newPostData.author" placeholder="Author">
     <input type="text" ng-model="newPostData.title" placeholder="Title">

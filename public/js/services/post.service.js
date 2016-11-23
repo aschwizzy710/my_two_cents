@@ -6,6 +6,7 @@ PostService.$inject = ['$http'];
 
 function PostService($http){
   var posts = [];
+  var selectedPost;
   var baseURL = '/posts/';
   init();
   return {
@@ -13,8 +14,13 @@ function PostService($http){
     getOne: getOne,
     create: create,
     update: update,
-    delete: deleteOne
+    delete: deleteOne,
+    getSelectedPost: getSelectedPost
   };
+
+  function getSelectedPost(){
+    return selectedPost;
+  }
 
   function init(){
     $http.get(baseURL)
@@ -28,7 +34,15 @@ function PostService($http){
   function getAll(){
     return posts;
   }
-  function getOne(id){}
+  function getOne(id){
+    $http.get(baseURL + id)
+        .then(function(response){
+          selectedPost = response.data.post[0]; // if the get returns an empty array, this will cause an error
+        })
+        .catch(function(error){
+          console.log(error);
+        });
+  }
   function create(newPost){
     $http.post(baseURL, newPost)
         .then(function(response){
