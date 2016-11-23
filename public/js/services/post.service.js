@@ -39,6 +39,14 @@ function PostService($http){
         });
   }
   function update(id, newPostData){}
-  function deleteOne(id){}
+  function deleteOne(id){
+    $http.delete(baseURL + id)
+        .then(function(response){
+          init();
+        })
+        .catch(function(err){
+          console.log(err);
+        });
+  }
 }
 }());

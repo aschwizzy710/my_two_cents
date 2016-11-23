@@ -20,15 +20,16 @@ function MainController($scope, PostService){
     PostService.create(newPost);
     $scope.newPost = {};
   }
-  function deleteOne(index, post){
-    PostService.deleteOne(index, post);
+  function deleteOne(id){
+    PostService.delete(id);
+    $scope.deleteID = '';
   }
   function edit(post){
     post.isBeingEdited = true;
   }
   function save(index, post){
-    AlbumService.update(index, post);
-    album.isBeingEdited = false;
+    PostService.update(index, post);
+    post.isBeingEdited = false;
   }
 }
 
