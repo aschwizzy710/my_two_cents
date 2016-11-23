@@ -8,8 +8,7 @@ function MainController($scope, PostService){
   $scope.posts = PostService.getAll();
   $scope.create = create;
   $scope.delete = deleteOne;
-  $scope.edit = edit;
-  $scope.save = save;
+  $scope.updatePost = updatePost;
 
   $scope.$watch(function(){
     return PostService.getAll();
@@ -24,12 +23,10 @@ function MainController($scope, PostService){
     PostService.delete(id);
     $scope.deleteID = '';
   }
-  function edit(post){
-    post.isBeingEdited = true;
-  }
-  function save(index, post){
-    PostService.update(index, post);
-    post.isBeingEdited = false;
+  function updatePost(id, newPostData){
+    PostService.update(id, newPostData);
+    $scope.updateID = '';
+    $scope.updatedPost = {};
   }
 }
 
