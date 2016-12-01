@@ -2,6 +2,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var crypto = require('crypto'); // no npm install necessary because part of node.js
+var jwt = require('jsonwebtoken');
+var signature = process.env.SIGNATURE || require('../../config.js').signature;
 
 var userSchema = new Schema({
   email:{
@@ -31,7 +33,17 @@ userSchema.methods.validPassword = function(password){
   var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
   return this.hash === hash; // if equal, then you provided the correct password. Otherwise, No!
 };
-userSchema.methods.generateJwt = function(){};
+userSchema.methods.generateJwt = function(){
+  var expiration = new Date();
+  expiration.setDate(expiration.getDate() + 7); // this moves the date and time to 7 days from now
+
+  return jwt.sign({
+    _id: this._id,
+    email: this.email,
+    exp: parseInt(expiration.getTime() / 1000)
+  }, signature);
+
+};
 
 
 var User = mongoose.model('User', userSchema);
