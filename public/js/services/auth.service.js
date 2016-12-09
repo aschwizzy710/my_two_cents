@@ -20,6 +20,7 @@
       // grabbing _id would be very similar to this
       if(isLoggedIn()){
         var token = getToken();
+<<<<<<< HEAD
         var payload;
         if(token){
           payload = token.split('.'[1]);
@@ -29,6 +30,14 @@
             email: payload.email
           };
         }
+=======
+        var payload = token.split('.')[1];
+        payload = $window.atob(payload);
+        payload = JSON.parse(payload);
+        return {
+          email: payload.email
+        };
+>>>>>>> 2926bb8c747c625e48e31cb02a124ce8c358907f
       } else {
         return null;
       }
@@ -47,7 +56,11 @@
         payload = $window.atob(payload);
         payload = JSON.parse(payload);
 
+<<<<<<< HEAD
         return payload.exp > Date.now() / 1000; // comparing the expiration date of our token to right now
+=======
+        return payload.exp > Date.now() / 1000; //comparing the expiration date of our token to right now
+>>>>>>> 2926bb8c747c625e48e31cb02a124ce8c358907f
       } else {
         return false;
       }

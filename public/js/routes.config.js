@@ -50,9 +50,16 @@
         })
         .otherwise({
           redirectTo: '/',
+<<<<<<< HEAD
           access: {
             restricted: false
           }
         });
+=======
+          access:{
+            restricted: false
+          }
+        })
+>>>>>>> 2926bb8c747c625e48e31cb02a124ce8c358907f
     }
 }());

@@ -57,7 +57,10 @@ router.post('/users/login', function(req, res){
       token: user.generateJwt()
     });
   })(req, res);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2926bb8c747c625e48e31cb02a124ce8c358907f
 });
 router.put('/users/profile/:userId', function(req, res){});
 
